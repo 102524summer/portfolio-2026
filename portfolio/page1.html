@@ -57,6 +57,7 @@
         }
 
         @keyframes twinkle {
+
             0%,
             100% {
                 opacity: 0.3;
@@ -82,8 +83,14 @@
         }
 
         svg {
-            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
         }
+
 
         .star:nth-child(2n) {
             animation-duration: 4s;
@@ -187,6 +194,7 @@
         }
 
         @keyframes wiggle {
+
             0%,
             100% {
                 transform: translateX(0) rotate(0deg);
@@ -820,9 +828,14 @@
 
 <body>
 
+
+    </svg>
+
+
     <div class="svg-container">
-        <svg width="594" height="1986" viewBox="0 0 594 1986" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M257.46 0C257.46 168.8 465.794 323.667 569.96 380C505.546 512.684 -31.0398 856.5 1.96022 596C34.9602 335.5 262.796 709.386 593.46 809.5C210.342 750.591 97.7909 813.199 1.96022 1023C299.117 982.145 492.96 1442.5 569.96 1156.5C646.96 870.5 256.233 1203.95 1.96022 1356C61.4135 1420.94 140.757 1452.72 569.96 1480.5C503.63 1575.58 356.259 1603.02 1.96022 1630.5C306.548 1649.09 478.46 2165.5 569.96 1776C661.46 1386.5 343.734 1955.88 1.96022 1985"
+        <svg width="2554" height="7701" viewBox="0 0 2554 7701" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M75.1603 14.6145C1282.25 -177.427 2097.58 1672.31 2510.29 592.59C2923 -487.126 247.922 2097.81 75.1603 1296.44C-97.6017 495.079 2157.91 2870.81 2510.29 1672.31C2862.67 473.804 -59.21 3636.27 75.1603 2386.8C209.531 1137.32 2310.1 4191.64 2510.29 2870.81C2710.47 1549.97 149.201 4714.66 75.1603 3565.8C1.11969 2416.94 2748.86 5438.01 2510.29 4154.41C2271.71 2870.81 -273.106 6260.65 75.1603 4847.62C423.427 3434.6 2419.79 6604.6 2510.29 5457.51C2600.78 4310.42 -85.2622 7170.17 75.1603 6047.9C235.583 4925.63 2655.63 7831.46 2510.29 6542.55C2364.95 5253.63 564.653 8154.14 75.1603 7047.83C-414.333 5941.52 1630.19 7723.41 2510.29 7700.28"
                 stroke="#A4194D" stroke-width="5" />
         </svg>
     </div>
@@ -846,9 +859,9 @@
 
     <div class="nav-bar">
         <a href="#home">summer <3</a>
-        <a href="#work">mijn werk</a>
-        <a href="#about">over mij</a>
-        <a href="#contact">contacten</a>
+                <a href="#work">mijn werk</a>
+                <a href="#about">over mij</a>
+                <a href="#contact">contacten</a>
     </div>
 
     <div class="speech-bubble bubble-1 left">creatief</div>
@@ -864,13 +877,13 @@
             <div class="hero-content">
                 <div class="hero-header">
                     <span>summer <3</span>
-                    <span>
-                        <a href="#work" style="color: #A4194D; text-decoration: none;">mijn werk</a>
-                        <a href="#about" style="color: #A4194D; text-decoration: none; margin-left: 15px;">over
-                            mij</a>
-                        <a href="#contact"
-                            style="color: #A4194D; text-decoration: none; margin-left: 15px;">contacten</a>
-                    </span>
+                            <span>
+                                <a href="#work" style="color: #A4194D; text-decoration: none;">mijn werk</a>
+                                <a href="#about" style="color: #A4194D; text-decoration: none; margin-left: 15px;">over
+                                    mij</a>
+                                <a href="#contact"
+                                    style="color: #A4194D; text-decoration: none; margin-left: 15px;">contacten</a>
+                            </span>
                 </div>
                 <div class="hero-title">
                     HI I'M<br>SUMMER
@@ -894,13 +907,13 @@
             <div class="work-header">
                 <div>
                     <span>summer <3</span>
-                    <span style="margin-left: 100px;">
-                        <a href="#work" style="color: #A4194D; text-decoration: none;">mijn werk</a>
-                        <a href="#about" style="color: #A4194D; text-decoration: none; margin-left: 15px;">over
-                            mij</a>
-                        <a href="#contact"
-                            style="color: #A4194D; text-decoration: none; margin-left: 15px;">contacten</a>
-                    </span>
+                            <span style="margin-left: 100px;">
+                                <a href="#work" style="color: #A4194D; text-decoration: none;">mijn werk</a>
+                                <a href="#about" style="color: #A4194D; text-decoration: none; margin-left: 15px;">over
+                                    mij</a>
+                                <a href="#contact"
+                                    style="color: #A4194D; text-decoration: none; margin-left: 15px;">contacten</a>
+                            </span>
                 </div>
             </div>
 
@@ -1022,7 +1035,7 @@
         let svg = document.querySelector("svg");
         let path = svg.querySelector("path");
         const pathLength = path.getTotalLength();
-        
+
         gsap.set(path, { strokeDasharray: pathLength });
 
         gsap.fromTo(

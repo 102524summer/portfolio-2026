@@ -57,7 +57,6 @@
         }
 
         @keyframes twinkle {
-
             0%,
             100% {
                 opacity: 0.3;
@@ -83,14 +82,8 @@
         }
 
         svg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
+            height: 100%;
         }
-
 
         .star:nth-child(2n) {
             animation-duration: 4s;
@@ -194,7 +187,6 @@
         }
 
         @keyframes wiggle {
-
             0%,
             100% {
                 transform: translateX(0) rotate(0deg);
@@ -828,19 +820,12 @@
 
 <body>
 
-
-    </svg>
-
-
     <div class="svg-container">
-       <svg width="7663" height="13825" viewBox="0 0 7663 13825" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M628.045 13823.6C614.612 13800.1 575.787 13700.7 461.119 13321C373.256 13030.1 245.701 12533.6 153.015 12057.6C60.3293 11581.6 11.633 11139.5 2.51199 10564.9C-6.60902 9990.32 25.3209 9296.56 104.166 8624.65C183.012 7952.75 307.806 7323.72 405.995 6906.69C549.33 6297.93 656.729 6080.21 707.394 5989.05C790.774 5839.03 986.325 5594.78 1300.84 5228.14C1481.09 5018.02 1724.49 4777.73 1882.73 4623.85C2274.7 4242.65 2620.72 4125.12 2692 4124.15C2785.07 4122.89 2526.99 3939.24 2387.8 3662.89C2327.03 3542.25 2326.3 3401.6 2377.57 3170.16C2406.02 3041.7 2501.67 2828.31 2579.8 2658.56C2714.67 2365.51 2890 2159.04 3053.35 1985.78C3291.76 1732.9 3574.2 1667.15 3934.77 1613.95C4289.63 1561.59 4549.25 1655.49 4677.12 1691.14C4924.21 1760.05 5103.91 1837.5 5211 1895.58C5422.47 2010.27 5652.75 2174.26 5834.54 2325.95C6081.4 2531.95 6175.88 2778.23 6234.98 2996.87C6281.1 3167.52 6201.38 3505.82 6126.86 3879.64C6082.24 4103.48 5977.79 4300.27 5842.37 4522.12C5666.31 4810.52 5478.87 4877.57 5360.21 4929.42C5268.46 4969.5 5178.5 4984.72 5062.19 4988.05C4841.92 4994.36 4555.78 4952.71 4318.6 4903.58C4080.5 4854.26 3718.64 4715.84 3522.1 4631.3C3294.95 4533.59 3188.22 4440.66 3059.74 4331.21C2958.58 4230.05 2894.21 4155.6 2812.85 4097.75C2792.34 4085.79 2775.55 4075.72 2753.16 4060.25" stroke="white" stroke-width="2" stroke-linecap="round"/>
-<path d="M2995.48 2019.4C2896.25 1878.73 2682.13 1493.09 2612.44 1246.3C2540.78 992.503 2595.22 756.811 2665.23 562.614C2729.1 385.451 2880.37 275.195 3026.63 164.751C3205.91 29.367 3554.19 -10.1383 3855.62 3.56077C4001.97 10.2115 4194.04 260.016 4432.18 576.406C4583.8 777.849 4566.38 1086.53 4636.04 1356.97C4675.84 1511.5 5043.45 1131.3 5323.26 971.256C5698.37 756.71 6010.88 777.585 6219.25 797.377C6364.91 811.213 6547.59 995.224 6752.88 1218.48C6887.61 1365 6879.54 1528.23 6877.94 1659.8C6876.83 1750.88 6810.36 1882.48 6733.45 2040.81C6555.34 2407.49 6232.22 2597.9 6161.9 2657.96C6132.99 2682.65 6120.12 2698.18 6166.12 2687.37C6471.8 2615.58 6643.19 2586.3 6940.39 2644.48C7137.12 2682.99 7291.46 2846.19 7431.3 2999.13C7572.03 3153.05 7619.4 3358.85 7652.2 3548.48C7676.99 3691.79 7651.4 3820.34 7606.39 3975.93C7518.37 4280.21 7383.26 4565.2 7289.23 4725.44C7235.89 4816.33 7187.87 4855.01 7145.56 4884.2C7066.34 4938.85 6943.88 4928.67 6700.17 4894.91C6363.22 4848.23 6250.29 4801.87 6171.06 4724.6C6084.34 4640.03 6053.06 4560.98 6027.43 4510.29C6011.64 4479.07 6036.93 4605.41 6008.67 4881.39C5983.41 5128.12 5917.25 5589.35 5874.72 5857.67C5804.29 6302.01 5668.29 6464.35 5552.96 6573.42C5448.86 6671.87 5182.28 6630.52 4951.17 6605.21C4791.75 6587.74 4627.3 6459.55 4473.35 6292.69C4226.25 6024.87 4107.9 5770.56 4064.03 5625.94C3889.47 5050.36 3912.7 4787.06 3900.92 4675.47C3883.25 4508.05 3399.08 5074.08 3145.96 5225.77C2976.68 5327.23 2783.52 5307.91 2387.11 5249.16C1979.92 5188.82 1702.82 5045.38 1613.37 5003.62C1479.53 4941.13 1380.15 4751.65 1260.27 4440.77C1131.11 4105.83 1187.6 4005.33 1237.44 3891.84C1344.92 3647.07 1582.1 3505.75 1893.1 3321.07C2132.5 3178.9 2274.71 3219.58 2326.44 3219.58C2467.78 3219.58 1794.51 3032.27 1584.76 2904.58C1452.82 2824.26 1407.35 2704.5 1381.73 2612.78C1353.86 2513.02 1408.06 2397.57 1642.07 2054.95C1760.25 1881.92 1875.62 1722.41 2321.85 1450.03C2464.84 1362.75 2548.89 1354.01 2620.48 1348.08C2708.6 1343.83 2796.05 1373.52 2871.05 1428.57C2908 1452.2 2942.73 1467.08 3013.59 1502.46"
-                stroke="#A4194D" stroke-width="5" stroke-linecap="round" />
+        <svg width="594" height="1986" viewBox="0 0 594 1986" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M257.46 0C257.46 168.8 465.794 323.667 569.96 380C505.546 512.684 -31.0398 856.5 1.96022 596C34.9602 335.5 262.796 709.386 593.46 809.5C210.342 750.591 97.7909 813.199 1.96022 1023C299.117 982.145 492.96 1442.5 569.96 1156.5C646.96 870.5 256.233 1203.95 1.96022 1356C61.4135 1420.94 140.757 1452.72 569.96 1480.5C503.63 1575.58 356.259 1603.02 1.96022 1630.5C306.548 1649.09 478.46 2165.5 569.96 1776C661.46 1386.5 343.734 1955.88 1.96022 1985"
+                stroke="#A4194D" stroke-width="5" />
         </svg>
     </div>
-
-
 
 
     <div class="star" style="top: 10%; left: 15%;"></div>
@@ -861,9 +846,9 @@
 
     <div class="nav-bar">
         <a href="#home">summer <3</a>
-                <a href="#work">mijn werk</a>
-                <a href="#about">over mij</a>
-                <a href="#contact">contacten</a>
+        <a href="#work">mijn werk</a>
+        <a href="#about">over mij</a>
+        <a href="#contact">contacten</a>
     </div>
 
     <div class="speech-bubble bubble-1 left">creatief</div>
@@ -871,6 +856,7 @@
     <div class="speech-bubble bubble-3 left">enthousiast</div>
     <div class="speech-bubble bubble-4 right">zelfstandig</div>
     <div class="speech-bubble bubble-5 left">teamplayer</div>
+    <div class="speech-bubble bubble-6 right">gedreven</div>
 
     <section id="home" class="hero-section">
         <div class="hero-container">
@@ -878,13 +864,13 @@
             <div class="hero-content">
                 <div class="hero-header">
                     <span>summer <3</span>
-                            <span>
-                                <a href="#work" style="color: #A4194D; text-decoration: none;">mijn werk</a>
-                                <a href="#about" style="color: #A4194D; text-decoration: none; margin-left: 15px;">over
-                                    mij</a>
-                                <a href="#contact"
-                                    style="color: #A4194D; text-decoration: none; margin-left: 15px;">contacten</a>
-                            </span>
+                    <span>
+                        <a href="#work" style="color: #A4194D; text-decoration: none;">mijn werk</a>
+                        <a href="#about" style="color: #A4194D; text-decoration: none; margin-left: 15px;">over
+                            mij</a>
+                        <a href="#contact"
+                            style="color: #A4194D; text-decoration: none; margin-left: 15px;">contacten</a>
+                    </span>
                 </div>
                 <div class="hero-title">
                     HI I'M<br>SUMMER
@@ -897,7 +883,7 @@
                     summerluijken@gmail.com /<br>
                     102524@glr.nl<br>
                     +31 6 13 00 30 07<br>
-                    EST. 2007
+                    EST. 2026
                 </div>
             </div>
         </div>
@@ -908,13 +894,13 @@
             <div class="work-header">
                 <div>
                     <span>summer <3</span>
-                            <span style="margin-left: 100px;">
-                                <a href="#work" style="color: #A4194D; text-decoration: none;">mijn werk</a>
-                                <a href="#about" style="color: #A4194D; text-decoration: none; margin-left: 15px;">over
-                                    mij</a>
-                                <a href="#contact"
-                                    style="color: #A4194D; text-decoration: none; margin-left: 15px;">contacten</a>
-                            </span>
+                    <span style="margin-left: 100px;">
+                        <a href="#work" style="color: #A4194D; text-decoration: none;">mijn werk</a>
+                        <a href="#about" style="color: #A4194D; text-decoration: none; margin-left: 15px;">over
+                            mij</a>
+                        <a href="#contact"
+                            style="color: #A4194D; text-decoration: none; margin-left: 15px;">contacten</a>
+                    </span>
                 </div>
             </div>
 
@@ -1014,12 +1000,13 @@
             </div>
         </div>
     </section>
-ß
+
     <section id="contact" class="footer-section scroll-reveal">
         <div class="footer-container">
             <div class="footer-content">
                 <p>────────────✾𖤓✾────────────</p>
                 <a href="mailto:summerluijken@gmail.com" class="footer-email">summerluijken@gmail.com</a><br>
+                <a href="mailto:102524@glr.nl" class="footer-email">/ 102524@glr.nl</a><br>
                 <a href="tel:+31613003007" class="footer-email">+31 6 13 00 30 07</a><br>
                 <div style="margin-top: 30px; font-weight: bold;">EST. 2026</div>
                 <p>────────────𖤓✾𖤓────────────</p>
@@ -1035,7 +1022,7 @@
         let svg = document.querySelector("svg");
         let path = svg.querySelector("path");
         const pathLength = path.getTotalLength();
-
+        
         gsap.set(path, { strokeDasharray: pathLength });
 
         gsap.fromTo(

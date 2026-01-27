@@ -24,6 +24,7 @@
             cursor: none !important;
         }
 
+        /* Custom Cursor Styles */
         .custom-cursor {
             width: 68px;
             height: 68px;
@@ -219,7 +220,7 @@
             color: #A4194D;
             z-index: 500;
             opacity: 0;
-            transition: all 0.6s ease-out;
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
             cursor: none !important;
         }
 
@@ -907,6 +908,7 @@
 
 <body>
 
+    <!-- Custom Cursor Elements -->
     <div class="custom-cursor"></div>
 
     <div class="star" style="top: 10%; left: 15%;"></div>
@@ -927,8 +929,8 @@
 
     <div class="nav-bar">
         <a href="#home">Summer <3</a>
+        <a href="#about">Over mij</a>
                 <a href="#work">Mijn werk</a>
-                <a href="#about">Over mij</a>
                 <a href="#contact">Contacten</a>
     </div>
 
@@ -946,9 +948,9 @@
                 <div class="hero-header">
                     <span>Summer <3</span>
                             <span>
-                                <a href="#work" style="color: #A4194D; text-decoration: none;">Mijn werk</a>
-                                <a href="#about" style="color: #A4194D; text-decoration: none; margin-left: 15px;">Over
+                                 <a href="#about" style="color: #A4194D; text-decoration: none; margin-left: 15px;">Over
                                     mij</a>
+                                <a href="#work" style="color: #A4194D; text-decoration: none;">Mijn werk</a>
                                 <a href="#contact"
                                     style="color: #A4194D; text-decoration: none; margin-left: 15px;">Contacten</a>
                             </span>
@@ -975,6 +977,26 @@
         ˋ°•*⁀➷
     </div>
 
+        <section id="about" class="footer-section scroll-reveal">
+        <div class="footer-container">
+            <div style="border: 3px solid #A4194D; padding: 60px 40px; margin-bottom: 40px;">
+                <div style="font-size: 18px; line-height: 2; min-height: 200px;">
+                    Hoi! ik ben Summer en ik ben 18 jaar,
+                    Ik zit op het Grafisch Lyceum Rotterdam en ik kom oorspronkelijk uit Engeland, maar ik woon in
+                    Dordrecht.
+
+                    <hr class="about-divider">
+
+                    <p style="font-size: 18px;">
+                        Ik ben gepassioneerd over front-end design en een zeer creatief persoon
+                        die veel plezier haalt uit het ontwerpen van visuele en
+                        gebruiksvriendelijke interfaces.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="work" class="work-section scroll-reveal">
 
         <div class="work-container">
@@ -982,9 +1004,9 @@
                 <div>
                     <span>Summer <3</span>
                             <span style="margin-left: 100px;">
-                                <a href="#work" style="color: #A4194D; text-decoration: none;">Mijn werk</a>
                                 <a href="#about" style="color: #A4194D; text-decoration: none; margin-left: 15px;">Over
                                     mij</a>
+                                <a href="#work" style="color: #A4194D; text-decoration: none;">Mijn werk</a>
                                 <a href="#contact"
                                     style="color: #A4194D; text-decoration: none; margin-left: 15px;">Contacten</a>
                             </span>
@@ -1019,7 +1041,9 @@
                 </div>
 
                 <div class="timeline-item">
-                    <div class="timeline-year">Quizzie<br><br>2025<br>Klik hier</div>
+                    <a href="https://jouw-quizzie-project.nl" target="_blank" style="text-decoration: none; color: inherit; display: contents; cursor: none !important;">
+                        <div class="timeline-year">Quizzie<br><br>2025<br>Klik hier</div>
+                    </a>
                     <div class="timeline-description">
                         Hier moesten ik en 2 teamgenoten een website maken, we hebben alles zelf ontworpen,
                         geprogrammeerd en getest. We hebben ook een logboek bijgehouden en met SCRUM borden gewerkt. We
@@ -1028,7 +1052,9 @@
                 </div>
 
                 <div class="timeline-item">
-                    <div class="timeline-year">Bakkerij<br><br>2025<br>Klik hier</div>
+                    <a href="https://jouw-bakkerij-project.nl" target="_blank" style="text-decoration: none; color: inherit; display: contents; cursor: none !important;">
+                        <div class="timeline-year">Bakkerij<br><br>2025<br>Klik hier</div>
+                    </a>
                     <div class="timeline-description">
                         Hier moesten ik en 2 teamgenoten een website maken voor een bakkerij. Hier hebben we ook alles
                         zelf ontworpen, alles zelf geprogrammerd en alles zelf getest. Hier hadden we ook 6 weken voor.
@@ -1036,7 +1062,9 @@
                 </div>
 
                 <div class="timeline-item">
-                    <div class="timeline-year">Modellen<br>Bureau<br><br>2026<br>Klik hier</div>
+                    <a href="https://jouw-modellen-bureau-project.nl" target="_blank" style="text-decoration: none; color: inherit; display: contents; cursor: none !important;">
+                        <div class="timeline-year">Modellen<br>Bureau<br><br>2026<br>Klik hier</div>
+                    </a>
                     <div class="timeline-description"> Hier heb ik ook gewerkt met 2 teamgenoten aan een modellen agency
                         voor ons school. We hebben gebruikt gemaakt van PHP voor databses om alle modellen op te slaan,
                         dus dat was een goed oefening daarmee. Dit was een 8 weken deadline </div>
@@ -1070,26 +1098,6 @@
         </div>
     </section>
 
-    <section id="about" class="footer-section scroll-reveal">
-        <div class="footer-container">
-            <div style="border: 3px solid #A4194D; padding: 60px 40px; margin-bottom: 40px;">
-                <div style="font-size: 18px; line-height: 2; min-height: 200px;">
-                    Hoi! ik ben Summer en ik ben 18 jaar,
-                    Ik zit op het Grafisch Lyceum Rotterdam en ik kom oorspronkelijk uit Engeland, maar ik woon in
-                    Dordrecht.
-
-                    <hr class="about-divider">
-
-                    <p style="font-size: 18px;">
-                        Ik ben gepassioneerd over front-end design en een zeer creatief persoon
-                        die veel plezier haalt uit het ontwerpen van visuele en
-                        gebruiksvriendelijke interfaces.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section id="contact" class="footer-section scroll-reveal">
         <div class="footer-container">
             <div class="footer-content">
@@ -1106,18 +1114,32 @@
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
+        // Custom Cursor JavaScript
         const cursor = document.querySelector('.custom-cursor');
         let lastTrailTime = 0;
         const trailDelay = 50;
+
+        // Initialize cursor position immediately on page load
+        cursor.style.opacity = '1';
+        cursor.style.display = 'block';
 
         document.addEventListener('mousemove', (e) => {
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
             
+            // Create trail effect
             const currentTime = Date.now();
             if (currentTime - lastTrailTime > trailDelay) {
                 createTrail(e.clientX, e.clientY);
                 lastTrailTime = currentTime;
+            }
+        });
+
+        // Also trigger on page visibility change (when returning to tab)
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) {
+                cursor.style.opacity = '1';
+                cursor.style.display = 'block';
             }
         });
 
@@ -1134,6 +1156,7 @@
             }, 800);
         }
 
+        // Add hover effect to interactive elements
         const interactiveElements = document.querySelectorAll('a, button, .timeline-year, .timeline-arrow, .star, .speech-bubble');
         
         interactiveElements.forEach(el => {

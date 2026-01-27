@@ -1544,3 +1544,1135 @@ een getalenteerde professioneel te observeren en hen te helpen.
     </script>
 </body>
 </html>
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summer - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #F5EBD8;
+            font-family: 'Courier New', monospace;
+            color: #A4194D;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Floating shapes background */
+        .floating-shape {
+            position: fixed;
+            border: 3px solid #A4194D;
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .shape-circle {
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .shape-square {
+            animation: float 10s ease-in-out infinite;
+        }
+
+        .shape-triangle {
+            width: 0;
+            height: 0;
+            border-left: 40px solid transparent;
+            border-right: 40px solid transparent;
+            border-bottom: 70px solid #A4194D;
+            opacity: 0.1;
+            animation: float 12s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-30px) rotate(5deg); }
+            50% { transform: translateY(-60px) rotate(-5deg); }
+            75% { transform: translateY(-30px) rotate(3deg); }
+        }
+
+        .star {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background: #A4194D;
+            border-radius: 50%;
+            opacity: 0.3;
+            z-index: 1;
+            animation: twinkle 3s ease-in-out infinite;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .star:hover {
+            transform: scale(3) rotate(360deg) !important;
+            opacity: 1 !important;
+            box-shadow: 0 0 25px rgba(164, 25, 77, 0.8);
+            animation: spinPulse 0.6s ease-in-out;
+        }
+
+        @keyframes spinPulse {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(3) rotate(180deg); }
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.5); }
+        }
+
+        .nav-bar {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #A4194D;
+            padding: 20px 35px;
+            border-radius: 35px;
+            z-index: 1000;
+            display: flex;
+            gap: 30px;
+            box-shadow: 0 4px 15px rgba(164, 25, 77, 0.3);
+            animation: slideInBounce 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transition: all 0.4s ease;
+        }
+
+        @keyframes slideInBounce {
+            0% { transform: translateX(200px) rotate(10deg); opacity: 0; }
+            60% { transform: translateX(-10px) rotate(-5deg); }
+            100% { transform: translateX(0) rotate(0); opacity: 1; }
+        }
+
+        .nav-bar:hover {
+            box-shadow: 0 12px 35px rgba(164, 25, 77, 0.6);
+            transform: translateY(-5px) scale(1.05);
+            background: linear-gradient(135deg, #A4194D 0%, #d4357d 100%);
+        }
+
+        .nav-bar a {
+            color: #F5EBD8;
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-bar a:hover {
+            transform: translateY(-5px) scale(1.2) rotate(-5deg);
+            text-shadow: 0 0 10px rgba(245, 235, 216, 0.8);
+        }
+
+        .nav-bar a::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: #F5EBD8;
+            transition: width 0.3s;
+            box-shadow: 0 0 10px #F5EBD8;
+        }
+
+        .nav-bar a:hover::after {
+            width: 100%;
+        }
+
+        /* Bouncing emoji decorations */
+        .bouncing-emoji {
+            position: fixed;
+            font-size: 40px;
+            z-index: 2;
+            cursor: pointer;
+            animation: bounce 2s ease-in-out infinite;
+            transition: all 0.3s ease;
+        }
+
+        .bouncing-emoji:hover {
+            animation: spin 0.5s ease-in-out;
+            transform: scale(2);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg) scale(1); }
+            100% { transform: rotate(360deg) scale(2); }
+        }
+
+        .speech-bubble {
+            position: fixed;
+            background: #A4194D;
+            color: #F5EBD8;
+            border: 3px solid #A4194D;
+            padding: 20px;
+            border-radius: 50%;
+            width: 140px;
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            z-index: 500;
+            opacity: 0;
+            transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(164, 25, 77, 0.4);
+        }
+
+        .speech-bubble.active {
+            opacity: 1;
+            animation: wiggleBounce 3s ease-in-out infinite;
+        }
+
+        .speech-bubble:hover {
+            transform: scale(1.4) rotate(10deg) !important;
+            background: #F5EBD8;
+            color: #A4194D;
+            box-shadow: 0 15px 40px rgba(164, 25, 77, 0.7);
+            animation: none;
+        }
+
+        @keyframes wiggleBounce {
+            0%, 100% { transform: translateX(0) rotate(0deg) scale(1); }
+            25% { transform: translateX(-5px) rotate(-5deg) scale(1.05); }
+            50% { transform: translateX(0) rotate(0deg) scale(1.1); }
+            75% { transform: translateX(5px) rotate(5deg) scale(1.05); }
+        }
+
+        .speech-bubble.left {
+            left: 80px;
+        }
+
+        .speech-bubble.left:not(.active) {
+            transform: translateX(-300px) rotate(-180deg);
+        }
+
+        .speech-bubble.left::after {
+            content: '';
+            position: absolute;
+            right: -12px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background: inherit;
+            border: 3px solid #A4194D;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .speech-bubble.left::before {
+            content: '';
+            position: absolute;
+            right: -25px;
+            top: 60%;
+            width: 12px;
+            height: 12px;
+            background: inherit;
+            border: 3px solid #A4194D;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .speech-bubble.right {
+            right: 80px;
+        }
+
+        .speech-bubble.right:not(.active) {
+            transform: translateX(300px) rotate(180deg);
+        }
+
+        .speech-bubble.right::after {
+            content: '';
+            position: absolute;
+            left: -12px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background: inherit;
+            border: 3px solid #A4194D;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .speech-bubble.right::before {
+            content: '';
+            position: absolute;
+            left: -25px;
+            top: 60%;
+            width: 12px;
+            height: 12px;
+            background: inherit;
+            border: 3px solid #A4194D;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .bubble-1 { top: 200px; }
+        .bubble-2 { top: 400px; }
+        .bubble-3 { top: 600px; }
+        .bubble-4 { top: 800px; }
+        .bubble-5 { top: 1000px; }
+
+        .hero-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            padding-top: 230px;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-container {
+            border: 4px solid #A4194D;
+            background: #F5EBD8;
+            max-width: 900px;
+            width: 100%;
+            position: relative;
+            animation: popInBounce 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transition: all 0.4s ease;
+        }
+
+        @keyframes popInBounce {
+            0% { transform: scale(0) rotate(-15deg); opacity: 0; }
+            50% { transform: scale(1.1) rotate(5deg); }
+            100% { transform: scale(1) rotate(0); opacity: 1; }
+        }
+
+        .hero-container:hover {
+            box-shadow: 0 20px 60px rgba(164, 25, 77, 0.4);
+            transform: translateY(-10px) rotate(1deg);
+        }
+
+        .hero-sidebar {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 80px;
+            border-right: 4px solid #A4194D;
+            background: linear-gradient(180deg, #F5EBD8 0%, rgba(164, 25, 77, 0.05) 100%);
+            transition: all 0.4s ease;
+        }
+
+        .hero-container:hover .hero-sidebar {
+            background: linear-gradient(180deg, #A4194D 0%, #d4357d 100%);
+            width: 85px;
+        }
+
+        .hero-content {
+            margin-left: 80px;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .hero-header {
+            border-bottom: 3px solid #A4194D;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .hero-header a {
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .hero-header a:hover {
+            transform: scale(1.2) translateY(-3px) rotate(-3deg);
+            text-shadow: 3px 3px 8px rgba(164, 25, 77, 0.4);
+        }
+
+        .hero-title {
+            font-size: 120px;
+            font-weight: bold;
+            line-height: 0.9;
+            margin: 40px 0;
+            animation: slideUpBounce 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.3s both;
+            cursor: default;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
+        }
+
+        @keyframes slideUpBounce {
+            0% { transform: translateY(100px) rotate(-10deg); opacity: 0; }
+            60% { transform: translateY(-10px) rotate(3deg); }
+            100% { transform: translateY(0) rotate(0); opacity: 1; }
+        }
+
+        .hero-title:hover {
+            letter-spacing: 15px;
+            transform: scale(1.1) rotate(-2deg);
+            text-shadow: 8px 8px 0px rgba(164, 25, 77, 0.3);
+            animation: shakeTilt 0.5s ease-in-out;
+        }
+
+        @keyframes shakeTilt {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(-3deg) scale(1.05); }
+            75% { transform: rotate(3deg) scale(1.05); }
+        }
+
+        .hero-subtitle {
+            font-size: 16px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            animation: slideUpBounce 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.5s both;
+            cursor: default;
+            transition: all 0.4s ease;
+        }
+
+        .hero-subtitle:hover {
+            transform: translateY(-10px) scale(1.05);
+            text-shadow: 4px 4px 0px rgba(164, 25, 77, 0.3);
+        }
+
+        .hero-footer {
+            border-top: 3px solid #A4194D;
+            padding: 15px 20px;
+            text-align: right;
+            font-size: 12px;
+            animation: slideUpBounce 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.7s both;
+            transition: all 0.3s ease;
+        }
+
+        .hero-footer:hover {
+            transform: translateX(-10px) scale(1.05);
+            background: rgba(164, 25, 77, 0.1);
+        }
+
+        .arrows {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0 40px;
+            font-size: 32px;
+            color: #A4194D;
+            opacity: 0.8;
+            animation: bounce 2s ease-in-out infinite;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .arrows:hover {
+            opacity: 1;
+            transform: scale(1.3) rotate(5deg);
+            text-shadow: 0 0 20px rgba(164, 25, 77, 0.6);
+        }
+
+        .work-section {
+            padding: 40px;
+            margin-bottom: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .work-container {
+            border: 4px solid #A4194D;
+            background: #F5EBD8;
+            max-width: 900px;
+            width: 100%;
+            padding: 40px;
+            animation: fadeInScale 1s ease-out;
+            transition: all 0.4s ease;
+        }
+
+        .work-container:hover {
+            box-shadow: 0 20px 60px rgba(164, 25, 77, 0.4);
+            transform: translateY(-10px) rotate(-1deg);
+        }
+
+        .work-header {
+            border-bottom: 3px solid #A4194D;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .work-header a {
+            transition: all 0.3s ease;
+        }
+
+        .work-header a:hover {
+            transform: scale(1.2) rotate(3deg);
+            text-shadow: 3px 3px 8px rgba(164, 25, 77, 0.4);
+        }
+
+        .work-title {
+            font-size: 48px;
+            font-weight: bold;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            cursor: default;
+        }
+
+        .work-title:hover {
+            letter-spacing: 8px;
+            color: #d4357d;
+            transform: scale(1.1) rotate(-2deg);
+            text-shadow: 5px 5px 0px rgba(164, 25, 77, 0.2);
+        }
+
+        .work-info {
+            text-align: right;
+            font-size: 12px;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .work-info:hover {
+            color: #d4357d;
+            transform: scale(1.1) rotate(2deg);
+            text-shadow: 2px 2px 5px rgba(164, 25, 77, 0.3);
+        }
+
+        .work-subtitle {
+            text-align: center;
+            margin: 30px 0;
+            font-size: 14px;
+            line-height: 1.6;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .work-subtitle:hover {
+            color: #d4357d;
+            transform: scale(1.05);
+            text-shadow: 2px 2px 5px rgba(164, 25, 77, 0.3);
+        }
+
+        .timeline {
+            border-top: 3px solid #A4194D;
+            padding-top: 30px;
+            position: relative;
+        }
+
+        .timeline-arrows {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .timeline-arrow {
+            color: #A4194D;
+            font-size: 24px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-block;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .timeline-arrow:nth-child(2n) { animation-delay: 0.2s; }
+        .timeline-arrow:nth-child(3n) { animation-delay: 0.4s; }
+
+        .timeline-arrow:hover {
+            transform: translateY(-10px) scale(1.5) rotate(180deg);
+            color: #d4357d;
+            text-shadow: 0 0 15px rgba(164, 25, 77, 0.6);
+        }
+
+        .about-divider {
+            border: none;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #A4194D, transparent);
+            margin: 40px 0;
+            width: 100%;
+            transition: all 0.4s ease;
+            animation: shimmer 3s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        .about-divider:hover {
+            height: 6px;
+            background: linear-gradient(90deg, #A4194D 0%, #d4357d 50%, #A4194D 100%);
+            background-size: 200% 100%;
+            box-shadow: 0 0 20px rgba(164, 25, 77, 0.5);
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateX(-50px) rotate(-5deg);
+            animation: slideInBounceItem 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+            transition: all 0.3s ease;
+        }
+
+        @keyframes slideInBounceItem {
+            0% { opacity: 0; transform: translateX(-50px) rotate(-5deg); }
+            60% { transform: translateX(5px) rotate(2deg); }
+            100% { opacity: 1; transform: translateX(0) rotate(0); }
+        }
+
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.4s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.6s; }
+
+        .timeline-item:hover {
+            transform: translateX(15px) scale(1.02);
+        }
+
+        .timeline-year {
+            background: linear-gradient(135deg, #A4194D 0%, #d4357d 100%);
+            color: #F5EBD8;
+            padding: 15px 20px;
+            font-weight: bold;
+            min-width: 150px;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline-year::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(245, 235, 216, 0.3) 0%, transparent 70%);
+            transition: all 0.6s ease;
+            transform: scale(0);
+        }
+
+        .timeline-year:hover::before {
+            transform: scale(1);
+        }
+
+        .timeline-year:hover {
+            transform: scale(1.15) rotate(-3deg) translateX(-5px);
+            box-shadow: 0 12px 30px rgba(164, 25, 77, 0.6);
+        }
+
+        .timeline-description {
+            flex: 1;
+            padding: 15px;
+            line-height: 1.6;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .timeline-description:hover {
+            background: rgba(164, 25, 77, 0.1);
+            transform: translateX(10px);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(164, 25, 77, 0.2);
+        }
+
+        .skills-section {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 3px solid #A4194D;
+        }
+
+        .skills-column {
+            flex: 1;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .skills-column:hover {
+            background: rgba(164, 25, 77, 0.1);
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(164, 25, 77, 0.3);
+        }
+
+        .skills-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .skills-column:hover .skills-title {
+            color: #d4357d;
+            transform: translateX(10px) scale(1.1);
+            text-shadow: 2px 2px 5px rgba(164, 25, 77, 0.3);
+        }
+
+        .skills-list {
+            list-style: none;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .skills-list li {
+            padding-left: 20px;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .skills-list li:hover {
+            transform: translateX(15px) scale(1.05);
+            color: #d4357d;
+        }
+
+        .skills-list li::before {
+            content: '✿';
+            position: absolute;
+            left: 0;
+            transition: all 0.3s ease;
+        }
+
+        .skills-list li:hover::before {
+            content: '→';
+            transform: scale(1.5);
+            color: #A4194D;
+        }
+
+        .footer-section {
+            padding: 40px;
+            margin-bottom: 80px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-container {
+            border: 4px solid #A4194D;
+            background: #F5EBD8;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 40px;
+            animation: fadeInScale 1s ease-out;
+            transition: all 0.4s ease;
+        }
+
+        .footer-container:hover {
+            box-shadow: 0 20px 60px rgba(164, 25, 77, 0.4);
+            transform: translateY(-10px) scale(1.02);
+        }
+
+        .footer-content {
+            font-size: 24px;
+            line-height: 1.8;
+        }
+
+        .footer-email {
+            color: #A4194D;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            display: inline-block;
+            position: relative;
+        }
+
+        .footer-email::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: #A4194D;
+            transition: width 0.4s ease;
+            box-shadow: 0 0 10px rgba(164, 25, 77, 0.5);
+        }
+
+        .footer-email:hover {
+            transform: scale(1.2) translateY(-5px) rotate(-2deg);
+            color: #d4357d;
+            text-shadow: 3px 3px 15px rgba(164, 25, 77, 0.5);
+        }
+
+        .footer-email:hover::after {
+            width: 100%;
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(80px) rotate(-5deg);
+            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0) rotate(0);
+        }
+
+        /* Confetti effect on click */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #A4194D;
+            pointer-events: none;
+            z-index: 9999;
+            animation: confettiFall 3s linear forwards;
+        }
+
+        @keyframes confettiFall {
+            to {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .speech-bubble { display: none; }
+            .bouncing-emoji { display: none; }
+            .floating-shape { display: none; }
+            .nav-bar { padding: 15px 20px; gap: 15px; }
+            .nav-bar a { font-size: 14px; }
+            .hero-title { font-size: 60px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Floating shapes -->
+    <div class="floating-shape shape-circle" style="width: 80px; height: 80px; top: 10%; left: 5%;"></div>
+    <div class="floating-shape shape-circle" style="width: 60px; height: 60px; top: 30%; right: 10%; animation-delay: 1s;"></div>
+    <div class="floating-shape shape-square" style="width: 70px; height: 70px; top: 50%; left: 15%; animation-delay: 2s;"></div>
+    <div class="floating-shape shape-circle" style="width: 90px; height: 90px; top: 70%; right: 20%; animation-delay: 1.5s;"></div>
+    <div class="floating-shape shape-square" style="width: 50px; height: 50px; top: 85%; left: 25%; animation-delay: 0.5s;"></div>
+    <div class="floating-shape shape-triangle" style="top: 20%; right: 30%; animation-delay: 2.5s;"></div>
+    <div class="floating-shape shape-triangle" style="top: 60%; left: 35%; animation-delay: 1s;"></div>
+
+    <!-- Bouncing emojis -->
+    <div class="bouncing-emoji" style="top: 15%; left: 25%; animation-delay: 0s;">✿</div>
+    <div class="bouncing-emoji" style="top: 40%; right: 15%; animation-delay: 0.5s;">♥</div>
+    <div class="bouncing-emoji" style="top: 65%; left: 10%; animation-delay: 1s;">✨</div>
+    <div class="bouncing-emoji" style="top: 80%; right: 25%; animation-delay: 1.5s;">🌸</div>
+
+    <!-- Stars -->
+    <div class="star" style="top: 10%; left: 15%;"></div>
+    <div class="star" style="top: 20%; left: 85%;"></div>
+    <div class="star" style="top: 15%; left: 50%;"></div>
+    <div class="star" style="top: 35%; left: 25%;"></div>
+    <div class="star" style="top: 45%; left: 75%;"></div>
+    <div class="star" style="top: 55%; left: 10%;"></div>
+    <div class="star" style="top: 65%; left: 90%;"></div>
+    <div class="star" style="top: 70%; left: 40%;"></div>
+    <div class="star" style="top: 80%; left: 60%;"></div>
+    <div class="star" style="top: 25%; left: 70%;"></div>
+    <div class="star" style="top: 40%; left: 45%;"></div>
+    <div class="star" style="top: 60%; left: 20%;"></div>
+    <div class="star" style="top: 75%; left: 80%;"></div>
+    <div class="star" style="top: 85%; left: 30%;"></div>
+    <div class="star" style="top: 30%; left: 95%;"></div>
+
+    <div class="nav-bar">
+        <a href="#home">Summer <3</a>
+        <a href="#work">Mijn werk</a>
+        <a href="#about">Over mij</a>
+        <a href="#contact">Contacten</a>
+    </div>
+
+    <div class="speech-bubble bubble-1 left">Creatief</div>
+    <div class="speech-bubble bubble-2 right">Leert graag</div>
+    <div class="speech-bubble bubble-3 left">Enthousiast</div>
+    <div class="speech-bubble bubble-4 right">Zelfstandig</div>
+    <div class="speech-bubble bubble-5 left">Teamplayer</div>
+
+    <section id="home" class="hero-section">
+        <div class="hero-container">
+            <div class="hero-sidebar"></div>
+            <div class="hero-content">
+                <div class="hero-header">
+                    <span>Summer <3</span>
+                    <span>
+                        <a href="#work" style="color: #A4194D; text-decoration: none;">Mijn werk</a>
+                        <a href="#about" style="color: #A4194D; text-decoration: none; margin-left: 15px;">Over mij</a>
+                        <a href="#contact" style="color: #A4194D; text-decoration: none; margin-left: 15px;">Contacten</a>
+                    </span>
+                </div>
+                <div class="hero-title">
+                    HI I'M<br>SUMMER
+                </div>
+                <div class="hero-subtitle">
+                    "Just start by creating your day. Then create your life."
+                </div>
+                <div class="hero-footer">
+                    Summerluijken@gmail.com /<br>
+                    102524@glr.nl<br>
+                    +31 6 13 00 30 07<br>
+                    EST. 2026
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="arrows">
+        ˋ°•*⁀➷
+    </div>
+
+    <section id="work" class="work-section scroll-reveal">
+        <div class="work-container">
+            <div class="work-header">
+                <div>
+                    <span>Summer <3</span>
+                    <span style="margin-left: 100px;">
+                        <a href="#work" style="color: #A4194D; text-decoration: none;">Mijn werk</a>
+                        <a href="#about" style="color: #A4194D; text-decoration: none; margin-left: 15px;">Over mij</a>
+                        <a href="#contact" style="color: #A4194D; text-decoration: none; margin-left: 15px;">Contacten</a>
+                    </span>
+                </div>
+            </div>
+
+            <div style="border: 3px solid #A4194D; padding: 30px; margin-bottom: 30px;">
+                <div class="work-title">
+                    SUMMER<br>LUIJKEN
+                </div>
+                <div class="work-info" style="margin-top: 20px;">
+                    Grafisch Lyceum Rotterdam<br>
+                    student 2024-2027
+                </div>
+            </div>
+
+            <div class="work-subtitle">
+                Werken waar ik door mijn studie heen trots<br>
+                op ben geweest
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-arrows">
+                    <span class="timeline-arrow">𓏵</span>
+                    <span class="timeline-arrow">𓏵</span>
+                    <span class="timeline-arrow">𓏵</span>
+                    <span class="timeline-arrow">𓏵</span>
+                    <span class="timeline-arrow">𓏵</span>
+                    <span class="timeline-arrow">𓏵</span>
+                    <span class="timeline-arrow">𓏵</span>
+                    <span class="timeline-arrow">𓏵</span>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">Quizzie<br><br>2025<br>Klik hier</div>
+                    <div class="timeline-description">
+                        Hier moesten ik en 2 teamgenoten een website maken, we hebben alles zelf ontworpen,
+                        geprogrammeerd en getest. We hebben ook een logboek bijgehouden en met SCRUM borden gewerkt. We
+                        hadden 6 weken hiervoor.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">Bakkerij<br><br>2025<br>Klik hier</div>
+                    <div class="timeline-description">
+                        Hier moesten ik en 2 teamgenoten een website maken voor een bakkerij. Hier hebben we ook alles
+                        zelf ontworpen, alles zelf geprogrammerd en alles zelf getest. Hier hadden we ook 6 weken voor.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">Modellen<br>Bureau<br><br>2026<br>Klik hier</div>
+                    <div class="timeline-description">
+                        Hier heb ik ook gewerkt met 2 teamgenoten aan een modellen agency voor ons school. We hebben gebruikt gemaakt van PHP voor databses om alle modellen op te slaan, dus dat was een goed oefening daarmee. Dit was een 8 weken deadline
+                    </div>
+                </div>
+
+                <div class="skills-section">
+                    <div class="skills-column">
+                        <div class="skills-title">Wat kan ik?</div>
+                        <ul class="skills-list">
+                            <li>Visueel ontwerpen</li>
+                            <li>Samenwerken</li>
+                            <li>Web design</li>
+                            <li>HTML5, CSS3, PHP en basis databases (mySQL)</li>
+                            <li>Responsive webdesign en UI/UX basisprincipes</li>
+                            <br>
+                            <p style="transition: all 0.3s ease; cursor: default;">✿　.　˚　. 　 ˚　✿.✿　.　˚　. 　 ˚　✿.✿　.</p>
+                        </ul>
+                    </div>
+                    <div class="skills-column">
+                        <div class="skills-title">Wat wil ik bereiken?</div>
+                        <div style="font-size: 14px; line-height: 1.8; transition: all 0.3s ease; cursor: default;">
+                            Ik vind het leuk om te leren en met mensen te praten, dus ik zou graag nieuwe vaardigheden willen leren, vooral op het gebied van UI/UX. Tijdens een toekomstige stage zou ik het heel leuk en leerzaam vinden om een getalenteerde professioneel te observeren en hen te helpen.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="footer-section scroll-reveal">
+        <div class="footer-container">
+            <div style="border: 3px solid #A4194D; padding: 60px 40px; margin-bottom: 40px;">
+                <div style="font-size: 18px; line-height: 2; min-height: 200px;">
+                    Hoi! ik ben Summer en ik ben 18 jaar,
+                    Ik zit op het Grafisch Lyceum Rotterdam en ik kom oorspronkelijk uit Engeland, maar ik woon in
+                    Dordrecht.
+
+                    <hr class="about-divider">
+
+                    <p style="font-size: 18px;">
+                        Ik ben gepassioneerd over front-end design en een zeer creatief persoon
+                        die veel plezier haalt uit het ontwerpen van visuele en
+                        gebruiksvriendelijke interfaces.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="footer-section scroll-reveal">
+        <div class="footer-container">
+            <div class="footer-content">
+                <p>────────────✾𖤓✾────────────</p>
+                <a href="mailto:summerluijken@gmail.com" class="footer-email">summerluijken@gmail.com</a><br>
+                <a href="mailto:102524@glr.nl" class="footer-email">/ 102524@glr.nl</a><br>
+                <a href="tel:+31613003007" class="footer-email">+31 6 13 00 30 07</a><br>
+                <div style="margin-top: 30px; font-weight: bold;">EST. 2026</div>
+                <p>────────────𖤓✾𖤓────────────</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll reveal animation
+        const revealElements = document.querySelectorAll('.scroll-reveal');
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const revealPoint = 150;
+                if (elementTop < windowHeight - revealPoint) {
+                    element.classList.add('active');
+                }
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+
+        // Speech bubbles animation on scroll
+        const speechBubbles = document.querySelectorAll('.speech-bubble');
+        const animateBubbles = () => {
+            const scrollPosition = window.scrollY;
+            speechBubbles.forEach((bubble, index) => {
+                const triggerPoint = 100 + (index * 150);
+                if (scrollPosition > triggerPoint) {
+                    bubble.classList.add('active');
+                } else {
+                    bubble.classList.remove('active');
+                }
+            });
+        };
+        window.addEventListener('scroll', animateBubbles);
+        animateBubbles();
+
+        // Confetti effect on click
+        document.addEventListener('click', function(e) {
+            // Create multiple confetti pieces
+            for (let i = 0; i < 15; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = e.clientX + 'px';
+                confetti.style.top = e.clientY + 'px';
+                confetti.style.background = ['#A4194D', '#d4357d', '#F5EBD8'][Math.floor(Math.random() * 3)];
+                confetti.style.transform = `translate(${(Math.random() - 0.5) * 100}px, ${Math.random() * -50}px) rotate(${Math.random() * 360}deg)`;
+                document.body.appendChild(confetti);
+                
+                setTimeout(() => confetti.remove(), 3000);
+            }
+        });
+
+        // Enhanced star interaction
+        document.querySelectorAll('.star').forEach(star => {
+            star.addEventListener('click', function(e) {
+                e.stopPropagation();
+                // Create extra sparkle effect
+                for (let i = 0; i < 8; i++) {
+                    const sparkle = document.createElement('div');
+                    sparkle.className = 'star';
+                    sparkle.style.position = 'fixed';
+                    sparkle.style.left = this.offsetLeft + 'px';
+                    sparkle.style.top = this.offsetTop + 'px';
+                    sparkle.style.animation = 'none';
+                    document.body.appendChild(sparkle);
+                    
+                    const angle = (i / 8) * Math.PI * 2;
+                    const distance = 50;
+                    const x = Math.cos(angle) * distance;
+                    const y = Math.sin(angle) * distance;
+                    
+                    setTimeout(() => {
+                        sparkle.style.transition = 'all 0.6s ease-out';
+                        sparkle.style.transform = `translate(${x}px, ${y}px) scale(2)`;
+                        sparkle.style.opacity = '0';
+                    }, 10);
+                    
+                    setTimeout(() => sparkle.remove(), 700);
+                }
+            });
+        });
+
+        // Floating emoji interaction
+        document.querySelectorAll('.bouncing-emoji').forEach(emoji => {
+            emoji.addEventListener('click', function(e) {
+                e.stopPropagation();
+                this.style.animation = 'spin 0.5s ease-in-out';
+                setTimeout(() => {
+                    this.style.animation = 'bounce 2s ease-in-out infinite';
+                }, 500);
+            });
+        });
+
+        // Timeline item extra animation
+        document.querySelectorAll('.timeline-item').forEach(item => {
+            item.addEventListener('mouseenter', function () {
+                this.style.transform = 'translateX(20px) scale(1.03)';
+            });
+            item.addEventListener('mouseleave', function () {
+                this.style.transform = 'translateX(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -12,6 +12,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            cursor: none !important;
         }
 
         body {
@@ -20,6 +21,73 @@
             color: #A4194D;
             overflow-x: hidden;
             position: relative;
+            cursor: none !important;
+        }
+
+        .custom-cursor {
+            width: 68px;
+            height: 68px;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            font-size: 68px;
+            transition: transform 0.1s ease;
+        }
+
+        .custom-cursor::before {
+            content: '✰';
+            color: #A4194D;
+            display: block;
+            animation: starBeat 1.5s ease-in-out infinite;
+        }
+
+        .custom-cursor.hover::before {
+            content: '★';
+            animation: starPulse 0.6s ease-in-out infinite;
+            font-size: 78px;
+        }
+
+        @keyframes starBeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            10% {
+                transform: scale(1.1);
+            }
+            20% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes starPulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.3);
+            }
+        }
+
+        .cursor-trail {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            font-size: 16px;
+            color: #A4194D;
+            opacity: 0.6;
+            animation: fadeOut 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                transform: translateY(-20px) scale(0.5);
+            }
+        }
+
+        a, button, .timeline-year, .timeline-arrow, .star, .speech-bubble {
+            cursor: none !important;
         }
 
         .star {
@@ -32,7 +100,7 @@
             z-index: 1;
             animation: twinkle 3s ease-in-out infinite;
             transition: all 0.3s ease;
-            cursor: pointer;
+            cursor: none !important;
         }
 
         .star:hover {
@@ -108,6 +176,7 @@
             font-size: 16px;
             transition: all 0.3s;
             position: relative;
+            cursor: none !important;
         }
 
         .nav-bar a:hover {
@@ -151,7 +220,7 @@
             z-index: 500;
             opacity: 0;
             transition: all 0.6s ease-out;
-            cursor: pointer;
+            cursor: none !important;
         }
 
         .speech-bubble.active {
@@ -343,6 +412,7 @@
 
         .hero-header a {
             transition: all 0.3s ease;
+            cursor: none !important;
         }
 
         .hero-header a:hover {
@@ -356,7 +426,7 @@
             line-height: 0.9;
             margin: 40px 0;
             animation: slideUp 1s ease-out 0.3s both;
-            cursor: default;
+            cursor: none !important;
             transition: all 0.5s ease;
             position: relative;
         }
@@ -372,7 +442,7 @@
             margin-bottom: 30px;
             line-height: 1.6;
             animation: slideUp 1s ease-out 0.5s both;
-            cursor: default;
+            cursor: none !important;
             transition: all 0.4s ease;
         }
 
@@ -441,6 +511,7 @@
 
         .work-header a {
             transition: all 0.3s ease;
+            cursor: none !important;
         }
 
         .work-header a:hover {
@@ -452,7 +523,7 @@
             font-size: 48px;
             font-weight: bold;
             transition: all 0.4s ease;
-            cursor: default;
+            cursor: none !important;
         }
 
         .work-title:hover {
@@ -464,7 +535,7 @@
             text-align: right;
             font-size: 12px;
             transition: all 0.3s ease;
-            cursor: default;
+            cursor: none !important;
         }
 
         .work-info:hover {
@@ -478,7 +549,7 @@
             font-size: 14px;
             line-height: 1.6;
             transition: all 0.3s ease;
-            cursor: default;
+            cursor: none !important;
         }
 
         .work-subtitle:hover {
@@ -502,8 +573,8 @@
             color: #A4194D;
             font-size: 24px;
             transition: all 0.3s ease;
-            cursor: pointer;
             display: inline-block;
+            cursor: none !important;
         }
 
         .timeline-arrow:hover {
@@ -554,9 +625,9 @@
             font-weight: bold;
             min-width: 150px;
             transition: all 0.4s ease;
-            cursor: pointer;
             position: relative;
             overflow: hidden;
+            cursor: none !important;
         }
 
         .timeline-year::before {
@@ -586,7 +657,7 @@
             line-height: 1.6;
             font-size: 14px;
             transition: all 0.3s ease;
-            cursor: default;
+            cursor: none !important;
         }
 
         .timeline-description:hover {
@@ -637,7 +708,7 @@
 
         .skills-list p {
             transition: all 0.3s ease;
-            cursor: default;
+            cursor: none !important;
         }
 
         .skills-list p:hover {
@@ -647,7 +718,7 @@
 
         .skills-column>div:not(.skills-title) {
             transition: all 0.3s ease;
-            cursor: default;
+            cursor: none !important;
         }
 
         .skills-column>div:not(.skills-title):hover {
@@ -659,6 +730,7 @@
             padding-left: 15px;
             position: relative;
             transition: all 0.3s ease;
+            cursor: none !important;
         }
 
         .skills-list li:hover {
@@ -712,6 +784,7 @@
             transition: all 0.4s ease;
             display: inline-block;
             position: relative;
+            cursor: none !important;
         }
 
         .footer-email::after {
@@ -811,11 +884,30 @@
             .hero-title {
                 font-size: 60px;
             }
+
+            .custom-cursor,
+            .cursor-trail {
+                display: none;
+            }
+
+            * {
+                cursor: auto !important;
+            }
+
+            body {
+                cursor: auto !important;
+            }
+
+            a, button, .timeline-year, .timeline-arrow, .star, .speech-bubble {
+                cursor: pointer !important;
+            }
         }
     </style>
 </head>
 
 <body>
+
+    <div class="custom-cursor"></div>
 
     <div class="star" style="top: 10%; left: 15%;"></div>
     <div class="star" style="top: 20%; left: 85%;"></div>
@@ -1013,6 +1105,46 @@
 
     <script>
         gsap.registerPlugin(ScrollTrigger);
+
+        const cursor = document.querySelector('.custom-cursor');
+        let lastTrailTime = 0;
+        const trailDelay = 50;
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            const currentTime = Date.now();
+            if (currentTime - lastTrailTime > trailDelay) {
+                createTrail(e.clientX, e.clientY);
+                lastTrailTime = currentTime;
+            }
+        });
+
+        function createTrail(x, y) {
+            const trail = document.createElement('div');
+            trail.className = 'cursor-trail';
+            trail.textContent = ['✧', '✦', '•', '◦', '○'][Math.floor(Math.random() * 5)];
+            trail.style.left = x + 'px';
+            trail.style.top = y + 'px';
+            document.body.appendChild(trail);
+            
+            setTimeout(() => {
+                trail.remove();
+            }, 800);
+        }
+
+        const interactiveElements = document.querySelectorAll('a, button, .timeline-year, .timeline-arrow, .star, .speech-bubble');
+        
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.classList.add('hover');
+            });
+            
+            el.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hover');
+            });
+        });
 
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {

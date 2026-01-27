@@ -9,6 +9,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            cursor: none !important;
         }
 
         body {
@@ -21,6 +22,73 @@
             overflow: hidden;
             position: relative;
             border: 10px solid #A4194D;
+            cursor: none !important;
+        }
+
+        .custom-cursor {
+            width: 68px;
+            height: 68px;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            font-size: 68px;
+            transition: transform 0.1s ease;
+        }
+
+        .custom-cursor::before {
+            content: '✰';
+            color: #A4194D;
+            display: block;
+            animation: starBeat 1.5s ease-in-out infinite;
+        }
+
+        .custom-cursor.hover::before {
+            content: '★';
+            animation: starPulse 0.6s ease-in-out infinite;
+            font-size: 78px;
+        }
+
+        @keyframes starBeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            10% {
+                transform: scale(1.1);
+            }
+            20% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes starPulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.3);
+            }
+        }
+
+        .cursor-trail {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            font-size: 16px;
+            color: #A4194D;
+            opacity: 0.6;
+            animation: fadeOut 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                transform: translateY(-20px) scale(0.5);
+            }
+        }
+
+        button, .logo-text, .skip-button {
+            cursor: none !important;
         }
 
         .star {
@@ -31,6 +99,7 @@
             border-radius: 50%;
             opacity: 0;
             animation: twinkleFade 2s ease-in-out infinite;
+            cursor: none !important;
         }
 
         @keyframes twinkleFade {
@@ -58,7 +127,7 @@
             letter-spacing: 15px;
             animation: floatLogo 3s ease-in-out infinite;
             text-shadow: 3px 3px 0px rgba(164, 25, 77, 0.2);
-            cursor: default;
+            cursor: none !important;
             transition: all 0.3s ease;
         }
 
@@ -216,11 +285,11 @@
             font-family: 'Courier New', monospace;
             font-size: 16px;
             font-weight: bold;
-            cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(164, 25, 77, 0.3);
             z-index: 1000;
             animation: slideInUp 0.6s ease-out 0.5s both;
+            cursor: none !important;
         }
 
         @keyframes slideInUp {
@@ -330,10 +399,30 @@
                 padding: 12px 24px;
                 font-size: 14px;
             }
+
+            .custom-cursor,
+            .cursor-trail {
+                display: none;
+            }
+
+            * {
+                cursor: auto !important;
+            }
+
+            body {
+                cursor: auto !important;
+            }
+
+            button, .logo-text, .skip-button, .star {
+                cursor: pointer !important;
+            }
         }
     </style>
 </head>
 <body>
+
+    <div class="custom-cursor"></div>
+
     <div class="decorative-elements">
         <div class="circle"></div>
         <div class="circle"></div>
@@ -378,6 +467,45 @@
     <button class="skip-button" onclick="skipToPage()">Skip Intro</button>
 
     <script>
+        const cursor = document.querySelector('.custom-cursor');
+        let lastTrailTime = 0;
+        const trailDelay = 50;
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            const currentTime = Date.now();
+            if (currentTime - lastTrailTime > trailDelay) {
+                createTrail(e.clientX, e.clientY);
+                lastTrailTime = currentTime;
+            }
+        });
+
+        function createTrail(x, y) {
+            const trail = document.createElement('div');
+            trail.className = 'cursor-trail';
+            trail.textContent = ['✧', '✦', '•', '◦', '○'][Math.floor(Math.random() * 5)];
+            trail.style.left = x + 'px';
+            trail.style.top = y + 'px';
+            document.body.appendChild(trail);
+            
+            setTimeout(() => {
+                trail.remove();
+            }, 800);
+        }
+
+        const interactiveElements = document.querySelectorAll('button, .logo-text, .skip-button, .star');
+        
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.classList.add('hover');
+            });
+            
+            el.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hover');
+            });
+        });
 
         for (let i = 0; i < 20; i++) {
             const star = document.createElement('div');
@@ -417,19 +545,23 @@
             window.location.href = 'page1.html';
         }
 
-        document.querySelectorAll('.star').forEach(star => {
-            star.addEventListener('mouseenter', function() {
-                this.style.transform = 'scale(2.5)';
-                this.style.opacity = '1';
-                this.style.boxShadow = '0 0 15px rgba(164, 25, 77, 0.8)';
+        setTimeout(() => {
+            document.querySelectorAll('.star').forEach(star => {
+                star.addEventListener('mouseenter', function() {
+                    cursor.classList.add('hover');
+                    this.style.transform = 'scale(2.5)';
+                    this.style.opacity = '1';
+                    this.style.boxShadow = '0 0 15px rgba(164, 25, 77, 0.8)';
+                });
+                
+                star.addEventListener('mouseleave', function() {
+                    cursor.classList.remove('hover');
+                    this.style.transform = '';
+                    this.style.opacity = '';
+                    this.style.boxShadow = '';
+                });
             });
-            
-            star.addEventListener('mouseleave', function() {
-                this.style.transform = '';
-                this.style.opacity = '';
-                this.style.boxShadow = '';
-            });
-        });
+        }, 100);
     </script>
 </body>
 </html>

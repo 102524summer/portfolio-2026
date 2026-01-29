@@ -476,6 +476,38 @@
             opacity: 0.8;
         }
 
+        /* Photo Grid Styles */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .photo-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 2px solid #A4194D;
+            object-fit: cover;
+            transition: all 0.4s ease;
+            cursor: none !important;
+            box-shadow: 0 4px 15px rgba(164, 25, 77, 0.1);
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.1) rotate(5deg);
+            border-width: 3px;
+            box-shadow: 0 10px 30px rgba(164, 25, 77, 0.3);
+        }
 
         .work-section {
             padding: 40px;
@@ -886,6 +918,16 @@
                 font-size: 60px;
             }
 
+            .photo-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .profile-photo {
+                width: 180px;
+                height: 180px;
+            }
+
             .custom-cursor,
             .cursor-trail {
                 display: none;
@@ -985,7 +1027,18 @@
                     Ik zit op het Grafisch Lyceum Rotterdam en ik kom oorspronkelijk uit Engeland, maar ik woon in
                     Dordrecht.
 
-                    <hr class="about-divider">
+                     <hr class="about-divider">
+                     
+                     <div class="photo-grid">
+                        <div class="photo-wrapper">
+                            <video src="/fotos/video1.mp4" class="profile-photo" autoplay loop muted playsinline></video>
+                        </div>
+                        <div class="photo-wrapper">
+                            <img src="/fotos/foto2.jpg" alt="Summer foto 2" class="profile-photo">
+                        </div>
+                     </div>
+                     
+                     <hr class="about-divider">
 
                     <p style="font-size: 18px;">
                         Ik ben gepassioneerd over front-end design en een zeer creatief persoon

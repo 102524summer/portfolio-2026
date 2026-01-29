@@ -1136,7 +1136,7 @@
                 </div>
 
                 <div class="timeline-item">
-                    <a href="https://jouw-modellen-bureau-project.nl" target="_blank" style="text-decoration: none; color: inherit; display: contents; cursor: none !important;">
+                    <a href="linkkomtnog" target="_blank" style="text-decoration: none; color: inherit; display: contents; cursor: none !important;">
                         <div class="timeline-year">Modellen<br>Bureau<br><br>2026<br>Klik hier</div>
                     </a>
                     <div class="timeline-description">
@@ -1192,12 +1192,10 @@
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
-        // Custom Cursor JavaScript
         const cursor = document.querySelector('.custom-cursor');
         let lastTrailTime = 0;
         const trailDelay = 50;
 
-        // Initialize cursor position immediately on page load
         cursor.style.opacity = '1';
         cursor.style.display = 'block';
 
@@ -1213,7 +1211,6 @@
             }
         });
 
-        // Also trigger on page visibility change (when returning to tab)
         document.addEventListener('visibilitychange', () => {
             if (!document.hidden) {
                 cursor.style.opacity = '1';
@@ -1234,7 +1231,6 @@
             }, 800);
         }
 
-        // Add hover effect to interactive elements
         const interactiveElements = document.querySelectorAll('a, button, .timeline-year, .timeline-arrow, .star, .speech-bubble');
         
         interactiveElements.forEach(el => {
